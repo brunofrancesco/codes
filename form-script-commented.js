@@ -1,11 +1,11 @@
 // The default sheet name is 'Sheet1'. To target a different sheet, update this variable.
-var sheetName = 'Sheet1'
+var sheetName = 'Sheet1' // Nome da tab da planilha,ok!
 
 /*
 Gets a property store that all users can access, but only within this script.
 https://developers.google.com/apps-script/reference/properties/properties-service#getScriptProperties()
 */
-var scriptProp = PropertiesService.getScriptProperties()
+var scriptProp = PropertiesService.getScriptProperties()// Essa eu não entendi mesmo o link leva para uma parte que tb não tem um step
 
 /*
 This is the initial setup function. It gets the active SpreadsheetApp ID and adds it to our PropertiesService.
@@ -13,7 +13,7 @@ https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#
 */
 function setup () {
   var doc = SpreadsheetApp.getActiveSpreadsheet()
-  scriptProp.setProperty('key', doc.getId())
+  scriptProp.setProperty('key', doc.getId())  //key" é os caracteres da url, ok!
 }
 
 function doPost (e) {
@@ -22,7 +22,7 @@ function doPost (e) {
   guarded by a script lock cannot be executed simultaneously regardless of the identity of the user.
   https://developers.google.com/apps-script/reference/lock/lock-service#getScriptLock()
   */
-  var lock = LockService.getScriptLock()
+  var lock = LockService.getScriptLock()// todas essa do lock não fica claro
 
   /*
   Attempts to acquire the lock, timing out with an exception after the provided number of milliseconds.
@@ -38,14 +38,14 @@ function doPost (e) {
     the spreadsheet ID in the URL https://docs.google.com/spreadsheets/d/abc1234567/edit#gid=0 is "abc1234567".
     https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#openbyidid
     */
-    var doc = SpreadsheetApp.openById(scriptProp.getProperty('key'))
+    var doc = SpreadsheetApp.openById(scriptProp.getProperty('key')) //é igual ao lá de cima acho!
 
     /*
     Returns a sheet with the given name. If multiple sheets have the same name,
     the leftmost one is returned. Returns null if there is no sheet with the given name.
     https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getSheetByName(String)
     */
-    var sheet = doc.getSheetByName(sheetName)
+    var sheet = doc.getSheetByName(sheetName) //é igual ao lá de cima acho!
 
     /*
     Returns the range with the top left cell at the given coordinates, and with the given number of rows.
